@@ -4,7 +4,8 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import morgan from 'morgan'
+import morgan from 'morgan';
+import routes from './routes/index';
 
 // Middleware
 const app = express();
@@ -18,6 +19,8 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
     res.json({ msg: 'Hello MERN' });
 });
+
+app.use('/api', routes.authRouter);
 
 // Database
 import './config/database';
